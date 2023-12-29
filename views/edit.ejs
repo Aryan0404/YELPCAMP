@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate') %>
+
+
+    <div class="row">
+        <h1 class="text-center">
+            Edit Camprground
+        </h1>
+        <!--offset-3 is one of the way of centering everything -->
+        <div class="col-6 offset-3">
+
+            <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate
+                class="needs-validation">
+                <div class="mb-3">
+                    <label for="title" class="form-label fs-2">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" value="<%=campground.title %>"
+                        required>
+                    <div class="valid-feedback">
+                        Looks Good
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label fs-2">Location</label>
+                    <input type="text" class="form-control" id="location" name="location"
+                        value="<%= campground.location%>" required>
+                    <div class="valid-feedback">
+                        Looks Good
+                    </div>
+                </div>
+                <div class="mb-3 ">
+                    <label class="form-label fs-2" for="image">Image Url</label>
+                    <input class="form-control" type="text" type="text" id="image" name="image"
+                        value="<%= campground.image %>" required>
+                    <div class="valid-feedback">
+                        Looks Good
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fs-2" for="description">Description</label>
+                    <textarea name="description" id="description" type="text" class="form-control"
+                        required><%= campground.description %></textarea>
+                    <div class="valid-feedback">
+                        Looks Good
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label fs-2">Price</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input name="price" type="text" class="form-control" id="price" placeholder="Amount"
+                            aria-label="Amount (to the nearest dollar)" value="<%= campground.price %>" required>
+                        <div class="valid-feedback">
+                            Looks Good
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info">Update Campground</button>
+                </div>
+
+            </form>
+
+            <a href="/campgrounds/<%= campground._id%>">Back To Campground</a>
+
+
+
+        </div>
+    </div>

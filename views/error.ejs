@@ -1,0 +1,14 @@
+<%- layout('layouts/boilerplate') %>
+    <%# The below code is from bootstrap alert card %>
+
+        <div class="container">
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading text-center">
+                    <%= err.message %>
+                </h4>
+                <p class="col-6">
+                    <%= err.stack %>
+                </p>
+            </div>
+
+        </div>
