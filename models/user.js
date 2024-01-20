@@ -10,6 +10,8 @@ const userSchema = new Schema({
     }
 })
 
-/*When you use passportLocalMongoose, it automatically adds a username field to the schema and provides methods for working with passwords and user authentication. */
+/*When you use passportLocalMongoose, 
+it automatically adds a username field to the 
+schema and provides methods for working with passwords and user authentication. */
 userSchema.plugin(passportLocalMongoose)
 module.exports = mongoose.model('User', userSchema)

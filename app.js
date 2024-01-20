@@ -1,3 +1,18 @@
+/*When we are dealing with sensitive information such as api credentials and all it is important to know that 
+sensitive information and debugging details are usually minizmized for security reasons in production environment
+
+When we checked the production environment is not there we got congif dotenv which takes info from .env files
+
+*/
+/*This code is typically found in a Node.js application and is commonly used for configuration setup, especially when dealing 
+with sensitive information such as API keys or credentials. Let's break down what each part does: */
+
+
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+console.log(process.env.CLOUDINARY_CLOUD_NAME)
+
 const express = require('express');
 const app = express();
 const flash = require('connect-flash');
@@ -69,9 +84,17 @@ passport.deserializeUser(User.deserializeUser());
 //---------------------------------------------------------------------------------------------------------------------------------------------
 
 app.use((req, res, next) => {
+    console.log(req.session)
+
     res.locals.success = req.flash('success')
     res.locals.error = req.flash('error')
     res.locals.currentUser = req.user;
+    /*req.user is a property commonly used in web applications that implement authentication, especially when using middleware like Passport.js.
+     It represents the currently authenticated user.
+
+    When a user logs in, Passport.js typically sets req.user to the authenticated user object. 
+    This object can include information about the user, such as their username, ID, and other relevant details.
+    */
     next()
 })
 //flash sessions should always be above the normal routes and below sessions because it needs session
